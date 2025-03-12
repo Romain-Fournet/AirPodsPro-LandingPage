@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const AirPodsPro = useRef(null);
+  const Pro = useRef(null);
   const AllNew = useRef(null);
   const scroller = useRef(null);
   const hasRun = useRef(false);
@@ -44,7 +45,6 @@ function App() {
             start: "+=3000 bottom",
             end: "+=2000",
             scrub: 1,
-            markers: true,
           },
         }
       );
@@ -75,11 +75,12 @@ function App() {
           translateY: -40,
         },
         {
+          ease: "power3.out",
           translateY: 70,
           scrollTrigger: {
             trigger: scroller.current,
             start: "+=3000 bottom",
-            end: "+=5000",
+            end: "+=2000",
             scrub: 1,
           },
         }
@@ -101,6 +102,26 @@ function App() {
           },
         }
       );
+      /*
+      //Animation Pro
+      gsap.fromTo(
+        Pro.current,
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+          display: "none",
+          scrollTrigger: {
+            trigger: scroller.current,
+            start: "+=3000 bottom",
+            end: "+=500",
+            scrub: 1,
+            markers: true,
+          },
+        }
+      );
+      */
 
       //Pin AirPods Pro sur toute la longueur
       ScrollTrigger.create({
@@ -138,7 +159,8 @@ function App() {
             className="text-[190px] font-semibold text-white text-center translate-y-[-60px]"
             ref={AirPodsPro}
           >
-            Airpods Pro
+            Airpods
+            <span ref={Pro}>{" Pro"}</span>
           </h1>
         </div>
       </div>
