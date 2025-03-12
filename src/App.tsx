@@ -12,7 +12,7 @@ function App() {
   const scroller = useRef(null);
   const hasRun = useRef(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  scrollPosition.toString();
   useEffect(() => {
     const handleScroll = () => {
       // Obtenez la position de défilement de la page
