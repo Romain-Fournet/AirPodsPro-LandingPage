@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import right from "/Right.png";
+import left from "/Left.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +32,8 @@ function Home() {
   const airpodsRef = useRef(null);
   const promaxRef = useRef(null);
   const allnewRef = useRef(null);
+  const rightRef = useRef(null);
+  const leftRef = useRef(null);
 
   const promaxBoxHeight = 138;
   const promaxBoxWidth = 270;
@@ -201,6 +205,53 @@ function Home() {
         }
       );
 
+      //Animation #2 right
+      gsap.fromTo(
+        rightRef.current,
+        {
+          scale: 0.6,
+          bottom: 385,
+          right: 250,
+          rotate: 45,
+        },
+        {
+          scale: 1.2,
+          bottom: -80,
+          right: -200,
+          rotate: 0,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: scroller.current,
+            start: "+=3000 bottom",
+            end: "+=2000",
+            scrub: 1,
+          },
+        }
+      );
+
+      //Animation #1 right
+      gsap.fromTo(
+        rightRef.current,
+        {
+          scale: 1.2,
+          bottom: -80,
+          right: -200,
+          rotate: 0,
+        },
+        {
+          scale: 0.6,
+          bottom: 385,
+          right: 250,
+          rotate: 45,
+          scrollTrigger: {
+            trigger: scroller.current,
+            start: "top bottom",
+            end: "+=1000",
+            scrub: 1,
+          },
+        }
+      );
+
       hasRun.current = true;
     }
   }, []);
@@ -236,6 +287,8 @@ function Home() {
             </div>
           </div>
         </div>
+        <img ref={leftRef} className="fixed" src={left} />
+        <img ref={rightRef} className="fixed -z-50" src={right} />
       </div>
       <div ref={scroller} className="h-[5001px] bg-black"></div>
     </>
