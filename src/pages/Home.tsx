@@ -252,6 +252,53 @@ function Home() {
         }
       );
 
+      //Animation #2 left
+      gsap.fromTo(
+        leftRef.current,
+        {
+          scale: 0.6,
+          bottom: 425,
+          left: 210,
+          rotate: -58,
+        },
+        {
+          scale: 1.2,
+          bottom: -60,
+          left: -350,
+          rotate: 0,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: scroller.current,
+            start: "+=3000 bottom",
+            end: "+=2000",
+            scrub: 1,
+          },
+        }
+      );
+
+      //Animation #1 left
+      gsap.fromTo(
+        leftRef.current,
+        {
+          scale: 1.2,
+          bottom: -60,
+          left: -350,
+          rotate: 0,
+        },
+        {
+          scale: 0.6,
+          bottom: 425,
+          left: 210,
+          rotate: -58,
+          scrollTrigger: {
+            trigger: scroller.current,
+            start: "top bottom",
+            end: "+=1000",
+            scrub: 1,
+          },
+        }
+      );
+
       hasRun.current = true;
     }
   }, []);
